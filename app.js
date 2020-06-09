@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
@@ -18,12 +18,9 @@ connection.once('open', () => {
     console.log("Mongo database connection established successfully");
 })
 
-const todosRouter = require('./routes/todos');
-const usersRouter = require('./routes/users');
+const TAG = require('./routes/tags');
 
-app.use('/todos', todosRouter);
-app.use('/users', usersRouter);
-
+app.use('/tags', TAG);
 
 app.listen(PORT, () => {
     console.log(`Server running on port http://localhost:${PORT}`)
